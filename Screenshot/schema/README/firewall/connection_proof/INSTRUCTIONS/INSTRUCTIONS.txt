@@ -1,20 +1,23 @@
-INSTRUCTIONS FOR SCREENSHOT SUBMISSIONS
-========================================
+# Screenshot Submission Guide
 
-Please take screenshots of your deployed Azure PostgreSQL database and save them under this folder to overwrite the placeholder files:
+Before submitting, replace each placeholder image in this folder with a real screenshot from your own Azure PostgreSQL deployment. Four screenshots are required, detailed below.
 
-1. server-overview.png
-   - Capture: The 'Overview' blade of your server in the Azure Portal.
-   - Purpose: Verifies that your server 'psql-lab-olamileye' exists, is active (status 'Running'), and displays the correct region (West Europe).
+## 1. `server-overview.png`
 
-2. firewall.png
-   - Capture: The 'Networking' blade (Public access tab) of your server.
-   - Purpose: Verifies the firewall rules, specifically showing your client IP allowed under the name 'AllowMyDevIP'.
+Open the Azure Portal, navigate to your server, and screenshot the **Overview** blade. This image is your evidence that the server `psql-lab-olamileye` was actually deployed — it should clearly show a `Running` status and confirm the server is sitting in the `West Europe` region.
 
-3. private-endpoint.png
-   - Capture: The 'Networking' blade (Private access tab) of your server.
-   - Purpose: Verifies that the Private Endpoint ('pe-psql-lab') is successfully integrated with the VNet subnet ('snet-db') and Private DNS.
+## 2. `firewall.png`
 
-4. connection_proof.png
-   - Capture: Your pgAdmin 4 browser tree or terminal showing psql.
-   - Purpose: Verifies that you have successfully established a TLS connection (using sslmode=require) and can see/query the 'labdb' database schema.
+From the same server, go to **Networking** and switch to the **Public access** tab, then capture that view. The grader will be checking for one specific firewall rule in your screenshot: a rule labeled `AllowMyDevIP` that permits your own client IP address through.
+
+## 3. `private-endpoint.png`
+
+Stay in **Networking**, but this time open the **Private access** tab. This screenshot needs to demonstrate that the private endpoint `pe-psql-lab` is properly wired up — connected to the `snet-db` subnet within your VNet, and resolvable through Private DNS.
+
+## 4. `connection_proof.png`
+
+Finally, prove the database is actually reachable. Screenshot either pgAdmin 4's server tree or a terminal session running `psql`, with the connection visibly established. The session must show TLS enforced via `sslmode=require`, and the `labdb` schema visible/queryable in the same shot.
+
+---
+
+**Note:** Each file name above must stay exactly as listed so the grading script can locate it — only the image content should change.
